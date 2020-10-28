@@ -2,10 +2,9 @@ import { createStyles, makeStyles } from '@material-ui/core';
 import ButtonBase from "@material-ui/core/ButtonBase"
 import Typography from "@material-ui/core/Typography"
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch} from 'react-redux';
 import {Product} from '../store/productSlice';
-
-
+import {addProduct} from '../store/productSlice'
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -88,6 +87,7 @@ const useStyles = makeStyles((theme) =>
 
 const Products=()=>{
     let products= useSelector((state:Product[])=>state);
+    const dispatch=useDispatch();
     const classes=useStyles();
     console.log(products)
     const RenderProduct=(product:Product)=>(
@@ -97,7 +97,7 @@ const Products=()=>{
         className={classes.image}
         focusVisibleClassName={classes.focusVisible}
           disabled={product.added}
-          // onClick={}
+          onClick={()=>{dispatch(addProduct(product))}}
           style={{
             width: `${100 / products.length}%`
           }}
