@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-export interface Product {
+export interface ProductInterface {
     id: string
     title: string
     description: string
@@ -10,7 +10,7 @@ export interface Product {
     added?: boolean
 }
 
-const INITIAL_STATE: Product[] = [{
+const INITIAL_STATE: ProductInterface[] = [{
     id: "123",
     title: "Blue t-shirt",
     description: "No fancy sizing charts here, one t-shirt size to rule them all",
@@ -38,6 +38,7 @@ export const productSlice = createSlice({
     initialState:INITIAL_STATE,
     reducers:{
         addProduct:(state,action)=>{
+            
             return state.map(item=>{
                 if(item.id!==action.payload.id){
                     return item;
@@ -48,9 +49,21 @@ export const productSlice = createSlice({
                     added:true
                 }
             })
+        },
+        removeProduct:(state,action)=>{
+            return state.map(item=>{
+                if(item.id!==action.payload.id){
+                    return item;
+                }
+                
+                return {
+                    ...item,
+                    added:false
+                }
+            })
         }
     }
 });
 
-export const {addProduct}=productSlice.actions
+export const {addProduct,removeProduct}=productSlice.actions
 export default productSlice.reducer

@@ -3,7 +3,7 @@ import ButtonBase from "@material-ui/core/ButtonBase"
 import Typography from "@material-ui/core/Typography"
 import React from 'react';
 import { useSelector,useDispatch} from 'react-redux';
-import {Product} from '../store/productSlice';
+import {ProductInterface} from '../store/productSlice';
 import {addProduct} from '../store/productSlice'
 
 const useStyles = makeStyles((theme) =>
@@ -86,11 +86,11 @@ const useStyles = makeStyles((theme) =>
 
 
 const Products=()=>{
-    let products= useSelector((state:Product[])=>state);
+    let products= useSelector((state:ProductInterface[])=>state);
     const dispatch=useDispatch();
     const classes=useStyles();
     console.log(products)
-    const RenderProduct=(product:Product)=>(
+    const RenderProduct=(product:ProductInterface)=>(
       <ButtonBase
         focusRipple
         key={product.id}

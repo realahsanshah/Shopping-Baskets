@@ -2,6 +2,7 @@ import { Box, Container } from '@material-ui/core';
 import React from 'react';
 import './App.css';
 import Products from './components/Product';
+import Basket from './components/Basket';
 
 function App() {
   return (
@@ -10,9 +11,9 @@ function App() {
          <Box mt={5} mb={5}>
            <Products />
          </Box>
-         {/* <Box mt={5} mb={5}>
+         <Box mt={5} mb={5}>
            <Basket />
-         </Box> */}
+         </Box>
        </Container>
     </div>
   );
