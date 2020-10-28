@@ -6,8 +6,16 @@ const basketSlice=createSlice ({
     initialState: state,
     reducers:{
         addItem:(state,action)=>{
-            console.log(state);
-            console.log(action);
+            return state.map(item=>{
+                if(item.id!==action.payload.id){
+                    return item;
+                }
+
+                return {
+                    ...item,
+                    added:true
+                }
+            })
             
         }
     }
